@@ -5,7 +5,7 @@ Description
 The Hexagon project aims to revolutionize the cryptocurrency world by introducing innovative blockchain technology. Our website serves as a platform to showcase our project's vision, features, and progress.
 
 Installation
-Clone the repository: git clone https://github.com/your-username/hexagon.git
+Clone the repository: 
 Install dependencies: npm install
 Build the project: npm run build
 Start the development server: npm start
