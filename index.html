@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hexogon</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+      }
+      /*body*/
+      body {
+        background: rgb(8, 5, 47);
+        background: linear-gradient(
+          343deg,
+          rgba(8, 5, 47, 1) 0%,
+          rgba(37, 12, 52, 1) 35%,
+          rgba(18, 3, 69, 1) 100%
+        );
+      }
+      /*Navebar*/
+      nav {
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(10px);
+      }
+      .navbar-brand {
+        font-weight: bolder;
+        font-size: 2rem;
+      }
+      .dropdown-menu {
+        background-color: rgb(0, 0, 0);
+        position: static;
+        float: none;
+        display: none;
+        min-width: 100%;
+      }
+      .dropdown-item{
+        color: rgb(179, 179, 179);
+      }
+      .dropdown-item:hover{
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+      .dropdown-item::after{
+        background-color: #141414;
+      }
+      .nav-display-menu{
+        text-decoration: none;
+        color: white;
+        font-weight: bolder;
+      }
+      .nav-display-menu:hover{
+        color: rgb(94, 34, 162);
+        font-weight: bolder;
+      }
+      .nav-item {
+        background-color: rgba(255, 255, 255, 0.042);
+        margin: 10px;
+        border-radius: 22px;
+        padding: 1.5px 6px;
+        border: 1px solid rgb(66, 66, 66);
+      }
+      .nav-link {
+        color: white;
+        text-decoration: none;
+      }
+      .drop-options-sub{
+          font-size: 12px;
+      }
+      .drop-options-heading{
+          font-size: 17px
+      }
+      @media (max-width: 991.98px) {
+        nav{
+          background-color: #000000;
+          max-height: 100vh;
+          overflow-y: auto;
+        }
+        .dropdown-menu {
+          position: relative;
+        }
+        .nav-item{
+          border: 1px solid rgb(66, 66, 66);
+          padding: 20px;
+          font-size: 18px;
+          font-weight: bolder;
+        }
+        .drop-options-sub{
+          font-size: 10px;
+        }
+        .drop-options-heading{
+          font-size: 15px
+        }
+      }
+      
+      /*heading*/
+      .Get-in-heading {
+        font-size: 4.5rem;
+        padding-top: 100px;
+      }
+      .Get-in-txt {
+        font-size: 1.6rem;
+        color: rgb(180, 180, 180);
+      }
+      /*div*/
+      #top-three-div {
+        margin-bottom: 90px;
+        height: 100%;
+      }
+      .transparent-div-section {
+        margin: 2rem;
+      }
+      .card {
+        padding: 2rem;
+        color: rgb(101, 100, 100);
+        background: rgba(68, 67, 67, 0.228);
+        transition: transform 0.2s, box-shadow 0.2s;
+        border-radius: 15px;
+        border: 2px white;
+      }
+      .card-title {
+        color: rgb(223, 225, 225);
+      }
+      .card-text {
+        font-size: 19px;
+        color: rgb(151, 152, 152);
+      }
+      .card:hover {
+        transform: scale(1.04);
+        background: rgba(172, 172, 172, 0.228);
+        transition: transform 0.2s;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      @media (max-width: 767.98px) {
+        .card {
+          margin-bottom: 10px;
+          margin-left: 1px;
+          margin-right: 1px;
+        }
+        .Get-in-heading {
+          padding-top: 35px;
+        }
+      }
+      /*stats*/
+      .stats-mobile {
+        display: none;
+      }
+      #stats-div {
+        background-color: rgb(16, 16, 16);
+        margin: 0px;
+      }
+      .stats-heading {
+        color: white;
+        font-size: 5vh;
+        padding: 5px;
+      }
+      .box {
+        height: 400px;
+        background: rgb(139, 101, 180);
+        background: linear-gradient(
+          3deg,
+          rgb(24, 24, 24) 40%,
+          rgb(36, 36, 36) 100%
+        );
+        border: none;
+        border-radius: 15px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        text-align: start;
+        justify-content: flex-end;
+        margin: 0px;
+        padding: 50px;
+        transition: transform 0.3s ease-in-out,
+          background-color 0.3s ease-in-out;
+      }
+      .box-2 {
+        margin-top: 90px;
+      }
+      .box-5 {
+        margin-top: 25px;
+      }
+      .box-4,
+      .box-6 {
+        margin-top: -70px;
+      }
+      .sats-main {
+        font-size: 3rem;
+        color: white;
+      }
+      .stats-sub {
+        font-size: 1.5rem;
+        color: #fdfdfc;
+      }
+      .box:hover {
+        background: rgb(43, 2, 81);
+        transform: translateY(-5px);
+      }
+      @media (max-width: 767px) {
+        .stat-whole{
+          padding: 2px;
+        }
+        .stats-heading {
+          font-size: 2rem;
+          padding: 10px;
+        }
+        .stats-desktop {
+          display: none;
+        }
+        .stats-mobile {
+          display: block;
+        }
+        .box {
+          background: rgb(139, 101, 180);
+          background: linear-gradient(
+            3deg,
+            rgb(24, 24, 24) 40%,
+            rgb(36, 36, 36) 100%);
+          height: 250px;
+          margin: 5px;
+          padding-top: 130px;
+          padding-bottom: 5px;
+          padding-left: 20px;
+          padding-right: 10px;
+          border-radius: 15px;
+          column-gap: 20px;
+        }
+        .sat-all-box {
+          margin: 0px;
+          padding: 2px;
+        }
+        .stats-mobile {
+          padding-top: 60px;
+          padding-bottom: 60px;
+          margin: none;
+          background-color: rgb(16, 16, 16);
+        }
+        .stats-sub {
+          margin: 0px;
+        }
+        .drop-box {
+          margin-top: -50px;
+        }
+        .sats-main-head {
+          color: white;
+        }
+        .stats-sub-line {
+          color: #fdfdfc;
+        }
+        .box:hover {
+          background: rgb(43, 2, 81);
+          transform: translateY(-5px);
+        }
+      }
+      /*Earth area*/
+      #earth {
+        background-color: #0b090e;
+        padding: 100px;
+      }
+      .video-head {
+        max-width: 500px;
+        margin: 0 auto; /* Center the text */
+        text-align: center;
+      }
+      .para {
+        font-size: 1.3rem;
+        color: #e7e7e6;
+        max-width: 500px;
+        margin: 0 auto; /* Center the text */
+        text-align: center;
+      }
+      .read-more {
+        border: none;
+        border-radius: 20px;
+        align-items: center;
+        color: white;
+        font-weight: bolder;
+        background-color: rgb(19, 112, 70);
+      }
+      .read-more:hover {
+        background-color: rgb(19, 112, 70, 0.9);
+      }
+      @media (max-width: 767px) {
+        #earth {
+          padding: 2rem;
+        }
+        .video-head {
+          max-width: 100%;
+          font-size: 2rem;
+        }
+        .para {
+          font-size: 20px;
+        }
+        .vedio-erth {
+          display: none;
+        }
+        .earth-image {
+          display: block !important;
+        }
+      }
+      /*Footer*/
+      /* Footer */
+      footer {
+        margin: 0px;
+        overflow: hidden;
+      }
+      .footer-list {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: start;
+      }
+      .footer-section {
+        background-color: #0b090e;
+      }
+      .footer-word {
+        color: rgb(105, 107, 108);
+        text-decoration: none;
+      }
+
+      .footer-word:hover {
+        text-decoration: none;
+        color: rgb(178, 178, 178);
+      }
+
+      .social-icon-img {
+        display: flex;
+        padding: 10px;
+        justify-content: flex-end;
+        align-items: center;
+      }
+      .bi {
+        font-size: 1.5rem;
+        color: rgb(189, 189, 189);
+      }
+      .bi:hover {
+        color: white;
+      }
+      .sudg-section {
+        margin: 0px;
+        display: flex;
+        justify-content: space-between;
+        align-items: top;
+      }
+      @media (max-width: 767px) {
+        .sudg-section {
+          text-align: center;
+          padding: 0px;
+          flex-direction: column;
+          align-items: center;
+        }
+        .sudg-section .footer-list {
+          margin-bottom: 20px;
+        }
+      }
+
+      #rights {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+      }
+/*anime- div*/
+#animation-div{
+  background: #000000;
+}
+.anime-video-box{
+  background-color: #000000;
+}
+.anime-video-content{
+  padding-left: 10px;
+  max-width: 500px;
+  margin: 5px;
+  padding: 5px;
+}
+.anime-sub-content{
+  color: rgb(151, 152, 152);
+}
+.anime-learn-more{
+  background: rgb(237, 237, 237);
+  border-radius: 20px;
+  font-weight: bolder;
+  border: none;
+}
+@media (max-width: 768px) {
+  .anime-video-box,
+  .anime-content-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .anime-content-text{
+    padding: 0px;
+    margin: 0px;
+    width: 200px;
+    flex-direction: row;
+  }
+  .anime-video-box{
+    border: 1px solid rgb(97, 97, 97);
+    border-radius: 10px;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+}
+/*Email*/
+.email-whole-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.email-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.email-content-div {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 100%;
+}
+
+.email-sub-content {
+  max-width: 400px;
+  margin: auto;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+@media (max-width: 767.98px) {
+  .email-video {
+    display: block; /* Change from display: none; */
+    height: 300px;
+    
+  }
+  .email-content-div {
+    height: 100px;
+    position: relative; /* Change from position: static; */
+    transform: none; /* Change from transform: none; */
+    top: 0; /* Add this line */
+
+  }
+}
+</style>
+  </head>
+  <body>
+    <!--navbar-->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand m-2 text-light" href="home.html">
+          <img src="Images/logo-big-01.png" alt="" width="60px"/>HEXAGON
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item p-2 dropdown">
+              <a class="nav-display-menu p-1"
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Resources</a
+              >
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <div class="drop-options pt-2 pb-5 px-4 ">
+                <li><a class="dropdown-item p-3 rounded-4 text-light" href="#"><h5 class="drop-options-heading">ZK Research</h5>
+                  <p class="drop-options-sub">Stay up to date on our ZK findings</p>
+                </a></li>
+                <li><a class="dropdown-item p-3 rounded-4 text-light" href="#"><h5 class="drop-options-heading">Whitepaper</h5>
+                  <p class="drop-options-sub">$POL utility and tokenomics</p>
+                </a></li>
+                <li><a class="dropdown-item p-3 rounded-4 text-light" href="#"><h5 class="drop-options-heading">Mediakit</h5>
+                  <p class="drop-options-sub">All your media and press needs</p>
+                </a></li>
+              </div>
+              </ul>
+            </li>
+            <li class="nav-item dropdown p-2">
+              <a class="nav-display-menu p-1"
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown2"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Community</a
+              >
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div class="drop-options pt-2 pb-5 px-4 ">
+                  <li><a class="dropdown-item p-3 rounded-4 text-light" href="#"><h5 class="drop-options-heading">Community Home</h5>
+                    <p class="drop-options-sub">Engage with our community through online.</p>
+                  </a></li>
+                  <li><a class="dropdown-item p-3 rounded-4 text-light" href="#"><h5 class="drop-options-heading">Governance</h5>
+                    <p class="drop-options-sub">Participate in shaping Hexogon  Protocols</p>
+                  </a></li>
+                  <li><a class="dropdown-item p-3 rounded-4 text-light" href="#"><h5 class="drop-options-heading">Events</h5>
+                    <p class="drop-options-sub">Meet us at events across the globe</p>
+                  </a></li>
+                  <li><a class="dropdown-item p-3 rounded-4 text-light" href="#"><h5 class="drop-options-heading">Ecosystem dApps</h5>
+                    <p class="drop-options-sub">Explore dApps in the Hexogon ecosystem</p>
+                  </a></li>
+                  <li><a class="dropdown-item p-3 rounded-4 text-light" href="#"><h5 class="drop-options-heading">Ecosystem Jobs</h5>
+                    <p class="drop-options-sub">Find a job in Hexogon ecosystem</p>
+                  </a></li>
+                </div>
+                </ul>
+            </li>
+            <li class="nav-item dropdown p-2">
+              <a class="nav-display-menu p-1"
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown3"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Solutions</a
+              >
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div class="drop-options pt-2 pb-5 px-4 ">
+                  <li><a class="dropdown-item p-3 rounded-4 text-light" href="#"><h5 class="drop-options-heading">Hexogon PoS</h5>
+                    <p class="drop-options-sub">An EVM enabled sidechain</p>
+                  </a></li>
+                  <li><a class="dropdown-item p-3 rounded-4 text-light" href="#"><h5 class="drop-options-heading">Hexogon zkEVM</h5>
+                    <p class="drop-options-sub">An EVM quuivalent, open-sourse zk-Rollup</p>
+                  </a></li>
+                  <li><a class="dropdown-item p-3 rounded-4 text-light" href="#"><h5 class="drop-options-heading">Hexogon Miden</h5>
+                    <p class="drop-options-sub">Zk-optimized rollup with client-side proving</p>
+                  </a></li>
+                  <li><a class="dropdown-item p-3 rounded-4 text-light" href="#"><h5 class="drop-options-heading">Hexogon CDK</h5>
+                    <p class="drop-options-sub">Build Ethereum Layer 2s Hexogon</p>
+                  </a></li>
+                  <li><a class="dropdown-item p-3 rounded-4 text-light" href="#"><h5 class="drop-options-heading">Hexogon ID</h5>
+                    <p class="drop-options-sub">A blockchain native identity system</p>
+                  </a></li>
+                </div>
+                </ul>
+            </li>
+            <li class="nav-item p-2">
+              <a class="nav-display-menu nav-link p-1" href="About.html"> About</a>
+            </li>
+            <li class="nav-item p-2">
+              <a class="nav-display-menu nav-link p-1" href="Contact.html">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+<!--Home-->
+<div id="Home-content" class="p-0 m-0">    
+    <!--Heading-->
+    <div class="container mt-4">
+      <div class="row">
+        <div class="col">
+          <h1 class="Get-in-heading text-center my-4 mt-5 text-light">
+            The Value Layer of the Internet
+          </h1>
+          <p class="Get-in-txt text-center mb-5">
+            The fundamental protocol that allows anyone to create and exchange
+            value, powered by zero-knowledge technology.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--3 div-->
+    <div class="container mt-4" id="top-three-div">
+      <div class="transparent-div-section row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title">Build</h3>
+              <p class="card-text">
+                Get access to our documents and start Building
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title">Stake</h3>
+              <p class="card-text">
+                Participate in the era of network by delegating HEXA tokens
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title">Use Hexagon</h3>
+              <p class="card-text">
+                Bridge, swap and manage tokens in the Hexagon Network
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+ <!--anime-div-->
+  <div class="container-fluid" id="animation-div"> 
+    <div class="container">
+       <h1 class="text-center text-light p-5 mt-5">The most adopted scaling technology</h1>
+    </div>   
+    <!--1st section-->
+      <div class="anime-video-box container p-5 d-flex ">
+        <div class="anime-video p-4 ">
+          <video width="400" height="400" autoplay loop muted>
+            <source src="Images/pollubh.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="p-5">
+         <div class="anime-video-content d-flex flex-column justify-content-center">
+          <h2 class="text-white pb-3"> PoS</h2>
+          <p class="anime-sub-content pb-3">Support the most widely used Ethereum scaling ecosystem that offers EVM compatibility and an ultimate user experience with fast transactions at near-zero gas fees today.</p>
+          <button class="anime-learn-more py-2 px-3" style="width: 150px;">Learn more</button>
+         </div>
+        </div>
+      </div>
+      <!--2nd section-->
+      <div class="anime-video-box container p-5 mb-0 d-flex" id="second-section">
+        <div class="p-5">
+          <div class="anime-video-content d-flex flex-column justify-content-center">
+            <h2 class="text-white pb-3"> zkEVM</h2>
+            <p class="anime-sub-content pb-3">Unlock Ethereum scalability while maintaining security with the first ZK-rollup that offers EVM equivalence with fast transactions at near-zero gas cost today..</p>
+            <button class="anime-learn-more py-2 px-3" style="width: 150px;">Learn more</button>
+          </div>
+        </div>
+        <div class="anime-video p-4 ">
+          <video width="400" height="400" autoplay loop muted>
+            <source src="Images/rowing.mp4" type="video/mp4" />
+          </video>
+        </div>
+  </div> 
+  </div>  
+    <!--stats-->
+    <div class="stat-whole container-fluid pt-5" id="stats-div">
+      <h1 class="stats-heading text-center mb-3">
+        The largest and most thriving ecosystem
+      </h1>
+      <!--sats desktop-->
+      <div class="stats-desktop p-5 col-sm-12 container-fluid m-0">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="box">
+              <h1 class="sats-main">28 K+</h1>
+              <p class="stats-sub">Total Contract Creators</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="box box-2">
+              <h1 class="sats-main">219.11M+</h1>
+              <p class="stats-sub">Unique Addresses</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="box">
+              <h1 class="sats-main">2.44B+</h1>
+              <p class="stats-sub">Transactions</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="box box-4">
+              <h1 class="sats-main">12.80B+</h1>
+              <p class="stats-sub">NFT Sales Volume</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="box box-5">
+              <h1 class="sats-main">~$0.015</h1>
+              <p class="stats-sub">Avg. Cost per txn</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="box box-6">
+              <h1 class="sats-main">1.17M+</h1>
+              <p class="stats-sub">Deployed Smart Contracts</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--sats mobile-->
+      <div class="stats-mobile container-fluid">
+        <div class="row row-col-1">
+          <div class="sat-all-box col-6">
+            <div class="box">
+              <h1 class="sats-main-head">28 K+</h1>
+              <p class="stats-sub-line">Total Contract Creators</p>
+            </div>
+          </div>
+          <div class="sat-all-box drop-box col-6">
+            <div class="box box-2">
+              <h1 class="sats-main-head">219.11M+</h1>
+              <p class="stats-sub-line">Unique Addresses</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="sat-all-box col-6">
+            <div class="box box-3">
+              <h1 class="sats-main-head">12.80B+</h1>
+              <p class="stats-sub-line">NFT Sales Volume</p>
+            </div>
+          </div>
+          <div class="sat-all-box drop-box col-6">
+            <div class="box box-4">
+              <h1 class="sats-main-head">~$0.015</h1>
+              <p class="stats-sub-line">Avg. Cost per txn</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="sat-all-box col-6">
+            <div class="box box-5">
+              <h1 class="sats-main-head">1.17M+</h1>
+              <p class="stats-sub-line">Deployed Smart Contracts</p>
+            </div>
+          </div>
+          <div class="sat-all-box drop-box col-6">
+            <div class="box box-6">
+              <h1 class="sats-main-head">2.44 B+</h1>
+              <p class="stats-sub-line">Transactions</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--video-->
+    <div class="container-fluid" id="earth">
+      <div class="container">
+        <div>
+          <div class="col">
+            <h1 class="video-head text-center pb-4 text-light">
+              Hello world,goodbye emissions
+            </h1>
+          </div>
+          <div class="para text-center text-light mb-5">
+            We are leveraging our core blockchain solutions and services to be
+            proactive in the fight against climate change. Hexogon is carbon
+            neutral, with plans to be climate positive.
+          </div>
+          <button class="read-more py-2 px-4 d-block mx-auto">Read more</button>
+        </div>
+        <div class="vedio-erth">
+          <video width="100%" height="700px" autoplay loop muted>
+            <source src="Images/earth.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="earth-image d-md-none text-center">
+          <img
+            src="Images/earthimage.png"
+            alt="Image"
+            style="
+              max-width: 100%;
+              padding-top: 35px;
+              padding-bottom: 50px auto;
+            "
+          />
+        </div>
+      </div>
+    </div>
+</div>    
+    <!--Email-->
+    <div class="email-whole-section container-fluid p-0 m-0 position-relative">
+      <video class="email-video" width="100%" height="100%" autoplay loop muted>
+        <source src="Images/emailbackground.mp4" type="video/mp4" />
+      </video>
+      <div class="email-content-div position-absolute top-50 start-0 translate-middle-y text-center">
+        <div class="email-sub-content d-flex flex-column justify-content-start p-5">
+          <h6 class="text-light">Stay up to date</h6>
+          <h2 class="text-light">Get our news letter</h2>
+          <form class="email-form mt-3" id="email-form">
+            <div class="input-group mb-3">
+              <input type="email" class="form-control text-dark" placeholder="Enter your email address" aria-label="Enter your email address" aria-describedby="button-addon2">
+              <button class="btn btn-light" type="button" id="button-addon2"><i class="fas fa-arrow-right"></i></button>
+            </div>
+          </form>
+          <div id="subscribe-message" class="text-light"></div>
+        </div>  
+      </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer-section text-white">
+      <div class="footer-brnd container py-5">
+        <div class="row">
+          <div
+            class="container col-md-12 d-flex justify-content-between align-items-center flex-column flex-md-row">
+            <div class="text-center mb-3 mb-md-0">
+              <h2>
+                <img src="Images/logo-big-01.png" alt="" width="50px" />Hexogon
+              </h2>
+            </div>
+            <div class="social-icons-img d-flex">
+              <ul class="list-unstyled d-flex mb-0">
+                <li class="social-icon-img">
+                  <a class="bi bi-facebook"></a>
+                </li>
+                <li class="social-icon-img">
+                  <a class="bi bi-twitter-x"></a>              
+                </li>
+                <li class="social-icon-img">
+                  <a class="bi bi-instagram" ></a>
+                </li>
+                <li class="social-icon-img">
+                  <a class="bi bi-github"></a>
+                </li>
+                <li class="social-icon-img">
+                  <a class="bi bi-whatsapp"></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Footer lists-->
+      <div class="container">
+        <div class="sudg-section row py-5 px-0">
+          <div class="footer-list d-block col-md-3 col-12">
+            <h5 class="mb-4">Solutions</h5>
+            <ul class="list-unstyled">
+              <li><a class="footer-word" href="#">Hexogon PoS</a></li>
+              <li><a class="footer-word" href="#">Hexogon zkEVM</a></li>
+              <li><a class="footer-word pb-4" href="#">Hexogon CDK</a></li>
+              <li><a class="footer-word" href="#">Hexogon Miden</a></li>
+              <li><a class="footer-word" href="#">Hexogon ID</a></li>
+            </ul>
+          </div>
+          <div class="footer-list d-block col-md-3 col-12">
+            <h5 class="mb-4">Use Hexogon</h5>
+            <ul class="list-unstyled">
+              <li><a class="footer-word" href="#">Hexogon Wallet Suite</a></li>
+              <li><a class="footer-word" href="#">Staking</a></li>
+              <li><a class="footer-word" href="#">Hexogon Scan</a></li>
+              <li><a class="footer-word" href="#">PoS Bridge Explorer</a></li>
+              <li><a class="footer-word" href="#">Faucet</a></li>
+              <li><a class="footer-word" href="#">Token Mapper</a></li>
+              <li><a class="footer-word" href="#">Safe Bridge</a></li>
+              <li><a class="footer-word" href="#">Ecosystem dApps</a></li>
+            </ul>
+          </div>
+          <div class="footer-list d-block col-md-3 col-12">
+            <h5 class="mb-4">Developers</h5>
+            <ul class="list-unstyled">
+              <li><a class="footer-word" href="#">Developer Hub</a></li>
+              <li><a class="footer-word" href="#">Developer Discord</a></li>
+              <li><a class="footer-word" href="#">Tech Docs</a></li>
+              <li><a class="footer-word" href="#">GitHub</a></li>
+              <li><a class="footer-word" href="#">Hexogon Wallet Suite</a></li>
+              <li><a class="footer-word" href="#">Forum</a></li>
+              <li><a class="footer-word" href="#">WebApps Bug Bounty</a></li>
+              <li><a class="footer-word" href="#">Contracts Bug Bounty</a></li>
+            </ul>
+          </div>
+          <div class="footer-list d-block col-md-3 col-12">
+            <h5 class="mb-4">General</h5>
+            <ul class="list-unstyled">
+              <li><a class="footer-word" href="#">About</a></li>
+              <li><a class="footer-word" href="#">Blog</a></li>
+              <li><a class="footer-word" href="#">Careers</a></li>
+              <li><a class="footer-word" href="#">Sustainability</a></li>
+              <li><a class="footer-word" href="#">Matic Token</a></li>
+              <li><a class="footer-word" href="#">Hexogon Ventures</a></li>
+              <li><a class="footer-word" href="#">Brand Guidelines</a></li>
+              <li><a class="footer-word" href="#">Institutions</a></li>
+              <li><a class="footer-word" href="#">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <p id="rights" class="p-5">2024 @ All Rights Reserved</p>
+</footer>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const dropdowns = document.querySelectorAll(".nav-item.dropdown");
+
+    function isDesktop() {
+        return window.innerWidth > 991.98; // Adjust the width as needed for your desktop breakpoint
+    }
+
+    if (isDesktop()) {
+        dropdowns.forEach((dropdown) => {
+            dropdown.addEventListener("mouseenter", function() {
+                this.querySelector(".dropdown-menu").classList.add("show");
+            });
+
+            dropdown.addEventListener("mouseleave", function() {
+                this.querySelector(".dropdown-menu").classList.remove("show");
+            });
+        });
+    }
+});
+//email
+document.getElementById('email-form').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent the form from submitting
+
+  // Get the email input value
+  var emailInput = document.querySelector('.email-form input[type="email"]');
+  var email = emailInput.value;
+
+  // Display the message
+  var messageElement = document.getElementById('subscribe-message');
+  messageElement.innerText = 'Thank You! We’ve received your submission!';
+
+  // Optional: Clear the input after submission
+  emailInput.value = '';
+});
+</script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
