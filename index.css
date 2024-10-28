@@ -1,0 +1,188 @@
+/* index.css */
+* {
+    margin: 0px;
+    padding: 0px;
+  }
+  /*body*/
+  body {
+    background: rgb(8, 5, 47);
+    background: linear-gradient(
+      343deg,
+      rgba(8, 5, 47, 1) 0%,
+      rgba(37, 12, 52, 1) 35%,
+      rgba(18, 3, 69, 1) 100%
+    );
+  }
+  /*Navebar*/
+  nav {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+  }
+  .navbar-brand {
+    font-weight: bolder;
+    font-size: 2rem;
+  }
+  .dropdown-menu {
+    background-color: rgb(0, 0, 0);
+    position: static;
+    float: none;
+    display: none;
+    min-width: 100%;
+  }
+  .dropdown-item{
+    color: rgb(179, 179, 179);
+  }
+  .dropdown-item:hover{
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  .dropdown-item::after{
+    background-color: #141414;
+  }
+  .nav-display-menu{
+    text-decoration: none;
+    color: white;
+    font-weight: bolder;
+  }
+  .nav-display-menu:hover{
+    color: rgb(94, 34, 162);
+    font-weight: bolder;
+  }
+  .nav-item {
+    background-color: rgba(255, 255, 255, 0.042);
+    margin: 10px;
+    border-radius: 22px;
+    padding: 1.5px 6px;
+    border: 1px solid rgb(66, 66, 66);
+  }
+  .nav-link {
+    color: white;
+    text-decoration: none;
+  }
+  .drop-options-sub{
+      font-size: 12px;
+  }
+  .drop-options-heading{
+    font-size: 17px;
+    display: flex;
+    padding: 10px;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .bi {
+    font-size: 1.5rem;
+    color: rgb(189, 189, 189);
+  }
+  .bi:hover {
+    color: white;
+  }
+  .sudg-section {
+    margin: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: top;
+  }
+  @media (max-width: 767px) {
+    .sudg-section {
+      text-align: center;
+      padding: 0px;
+      flex-direction: column;
+      align-items: center;
+    }
+    .sudg-section .footer-list {
+      margin-bottom: 20px;
+    }
+  }
+
+  #rights {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+/*anime- div*/
+#animation-div{
+background: #000000;
+}
+.anime-video-box{
+background-color: #000000;
+}
+.anime-video-content{
+padding-left: 10px;
+max-width: 500px;
+margin: 5px;
+padding: 5px;
+}
+.anime-sub-content{
+color: rgb(151, 152, 152);
+}
+.anime-learn-more{
+background: rgb(237, 237, 237);
+border-radius: 20px;
+font-weight: bolder;
+border: none;
+}
+@media (max-width: 768px) {
+.anime-video-box,
+.anime-content-text {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+.anime-content-text{
+padding: 0px;
+margin: 0px;
+width: 200px;
+flex-direction: row;
+}
+.anime-video-box{
+border: 1px solid rgb(97, 97, 97);
+border-radius: 10px;
+width: 100%;
+overflow: hidden;
+margin-bottom: 20px;
+}
+}
+/*Email*/
+.email-whole-section {
+position: relative;
+overflow: hidden;
+}
+
+.email-video {
+display: block;
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+
+.email-content-div {
+position: absolute;
+top: 50%;
+left: 0;
+transform: translateY(-50%);
+width: 100%;
+}
+
+.email-sub-content {
+max-width: 400px;
+margin: auto;
+background: rgba(0, 0, 0, 0.5);
+padding: 20px;
+border-radius: 10px;
+}
+
+@media (max-width: 767.98px) {
+.email-video {
+display: block; /* Change from display: none; */
+height: 300px;
+
+}
+.email-content-div {
+height: 100px;
+position: relative; /* Change from position: static; */
+transform: none; /* Change from transform: none; */
+top: 0; /* Add this line */
+
+}
+}
+
+
